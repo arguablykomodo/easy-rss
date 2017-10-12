@@ -4,6 +4,13 @@
   "name": "EasyRSS",
   "description": "A simple and easy to use RSS reader extension for firefox and chrome",
 
+  "background": {
+    "scripts": [
+      "background.js"
+    ],
+    "persistent": false
+  },
+
   "icons": {
     "16": "images/icon-16.png",
     "32": "images/icon-32.png",
