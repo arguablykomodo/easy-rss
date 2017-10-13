@@ -30,13 +30,13 @@ gulp.task("css", () => {
   return gulp.src("src/**/*.scss")
     .pipe(sass().on("error", sass.logError))
     .pipe(autoprefixer({ browsers: [">1%"] }))
-    .pipe(cssnano())
+    .pipe(gulpif(release, cssnano()))
     .pipe(gulp.dest("build"));
 });
 
 gulp.task("html", () => {
   return gulp.src("src/**/*.html")
-    .pipe(htmlmin({ collapseWhitespace: true }))
+    .pipe(gulpif(release, htmlmin({ collapseWhitespace: true })))
     .pipe(gulp.dest("build"));
 });
 

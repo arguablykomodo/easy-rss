@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "gulp watch",
-    "build": "gulp build"
+    "build": "gulp build --release"
   },
   "author": "SrKomodo",
   "license": "GPL-3.0",
