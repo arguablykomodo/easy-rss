@@ -41,7 +41,7 @@ gulp.task("html", () => {
 });
 
 gulp.task("assets", () => {
-  return gulp.src("src/assets/**/*")
+  return gulp.src(["src/assets/**/*", "node_modules/font-awesome/fonts/*"])
     .pipe(gulp.dest("build/assets"));
 });
 
