@@ -6,15 +6,54 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   const feedContainer = document.getElementById("feeds");
+
   /** @type {HTMLTemplateElement} */
   const template = document.getElementById("feed");
-  for (let i = 0; i < 10; i++) {
-    let now = new Date();
-    template.content.querySelector(".feed-img").src = "http://placekitten.com/200/300";
-    template.content.querySelector(".feed-author").innerText = "Lorem Ipsum";
-    template.content.querySelector(".feed-date").innerText = `${now.getDate()}/${now.getMonth()}/${now.getFullYear()} ${now.toTimeString().split(" ")[0]}`;
-    template.content.querySelector(".feed-title").innerText = "Dolores sit amet, placeholder stuff yada yada yada";
 
-    feedContainer.appendChild(document.importNode(template.content, true));
-  }
+  chrome.storage.local.get({entries: []}, (results => {
+    /** @type {Entry[]} */
+    let entries = results.entries;
+    for (let i = 0; i < entries.length; i++) {
+
+      let entry = entries[i];
+      if (entry.read) continue;
+
+      let element = document.importNode(template.content, true);
+      element.firstElementChild.id = entry.date;
+      
+      /** @type {HTMLImageElement} */
+      let imageElement = document.createElement("img");
+
+      if (entry.image) imageElement.src = entry.image.url;
+      else imageElement.src = "https://www.google.com/s2/favicons?domain=" + entry.link;
+      imageElement.width = 16;
+      imageElement.height = 16;
+      element.querySelector(".feed-author").appendChild(imageElement);
+      
+      let authorElement = document.createElement("span");
+      authorElement.innerText = entry.author;
+      element.querySelector(".feed-author").appendChild(authorElement);
+      
+      element.querySelector(".feed-date").innerText = entry.date;
+      
+      element.querySelector(".feed-title").innerText = entry.title;
+      element.querySelector(".feed-title").addEventListener("click", () => {
+        entries[i].read = true;
+        chrome.storage.local.set({ entries: entries });
+        chrome.tabs.create({url: entry.link});
+      });
+
+      element.querySelector(".delete").addEventListener("click", () => {
+        entries[i].read = true;
+        document.getElementById(entry.date).remove();
+        chrome.storage.local.set({entries: entries});
+      });
+
+      feedContainer.appendChild(element);
+    }
+  }));
+
+  document.getElementById("openSettings").addEventListener("click", () => {
+    chrome.runtime.openOptionsPage();
+  });
 });

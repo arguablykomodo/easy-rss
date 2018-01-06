@@ -17,14 +17,29 @@ $primary: $blue;
 @import "../../node_modules/bulma/sass/components/navbar";
 @import "../../node_modules/bulma/sass/components/media";
 
-html {
-  min-width: 500px;
+html, body {
+  width: 700px;
+  min-width: 700px;
   overflow: hidden;
 }
 
+#importFile {
+  display: none;
+}
+
 #feeds {
+  min-height: 176px;
   max-height: 500px;
   overflow: auto;
+}
+
+.feed-author * {
+  line-height: 23px;
+  vertical-align: middle;
+}
+
+.feed-author img {
+  margin-right: 5px;
 }
 
 .navbar-burger {
@@ -42,9 +57,3 @@ html {
   right: 0;
   z-index: 1;
 }
-
-// .navbar-brand .navbar-item:nth-child(2) {
-//   height: 100%;
-//   position: absolute;
-//   right: 0;
-// }

@@ -4,11 +4,23 @@
   "name": "EasyRSS",
   "description": "A simple and easy to use RSS reader extension for firefox and chrome",
 
+  "applications": {
+    "gecko": {
+      "id": "easyrss@srkomodo.org",
+      "strict_min_version": "42.0"
+    }
+  },
+
   "background": {
     "scripts": [
       "background.js"
     ],
     "persistent": false
+  },
+
+  "options_ui": {
+    "open_in_tab": true,
+    "page": "options/index.html"
   },
 
   "icons": {
@@ -29,6 +41,7 @@
   },
 
   "permissions": [
+    "<all_urls>",
     "storage",
     "alarms"
   ]

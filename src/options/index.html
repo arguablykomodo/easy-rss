@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="stylesheet.css">
+  <title>EasyRSS Settings</title>
+</head>
+<body>
+  <template id="feedTemplate">
+    <li>
+      <a>
+        <span class="icon">
+          <i class="fa"></i>
+        </span>
+      </a>
+    </li>
+  </template>
+
+  <nav class="navbar is-primary is-transparent" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <div class="navbar-item has-text-weight-semibold">EasyRSS Settings</div>
+    </div>
+  </nav>
+
+  <div class="box">
+    <h1 class="title">Manage Feeds</h1>
+    <aside class="menu">
+      <ul id="entries" class="menu-list">
+        
+      </ul>
+    </aside>
+    <div class="field has-addons" id="importButtons">
+      <div class="control">
+        <div class="file">
+          <label class="file-label">
+            <input class="file-input" type="file" id="importFile">
+            <span class="file-cta">
+              <span class="file-icon">
+                <i class="fa fa-upload"></i>
+              </span>
+              <span class="file-label">
+                Import feeds from .opml file
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+      <div class="control">
+        <a class="button">Export feeds to .opml file</a>
+      </div>
+    </div>
+  </div>
+    
+  <div class="box">
+    <h1 class="title">Settings</h1>
+    <div id="interval" class="field has-addons">
+      <div class="control">
+        <a class="button is-static">
+          Fetching interval:
+        </a>
+      </div>
+      <div class="control is-expanded">
+        <input class="input" type="range" value="50" min="1" max="60">
+      </div>
+      <div class="control">
+        <a class="button is-static">
+          minutes
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

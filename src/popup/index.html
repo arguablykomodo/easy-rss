@@ -10,15 +10,12 @@
   <template id="feed">
     <article class="box media is-marginless is-radiusless">
       <figure class="media-left">
-        <p class="image is-64x64">
-          <img class="feed-img" src="http://bulma.io/images/placeholders/128x128.png">
-        </p>
       </figure>
       <div class="media-content">
         <div class="content">
           <p>
             <span class="feed-author" class="is-size-7"></span>
-            <br><strong class="feed-title"></strong>
+            <br><strong><a class="feed-title"></a></strong>
             <br><span class="feed-date" class="is-size-7"></span>
           </p>
         </div>
@@ -45,14 +42,8 @@
         <a class="navbar-item">
           <span class="icon"><i class="fa fa-fw fa-plus"></i></span> Add a feed from this page
         </a>
-        <a class="navbar-item">
-          <span class="icon"><i class="fa fa-fw fa-upload"></i></span> Import feeds from .opml file
-        </a>
-        <a class="navbar-item">
-          <span class="icon"><i class="fa fa-fw fa-download"></i></span> Export feeds to .opml file
-        </a>
-        <a class="navbar-item">
-          <span class="icon"><i class="fa fa-fw fa-cog"></i></span> Settings
+        <a class="navbar-item" id="openSettings">
+          <span class="icon"><i class="fa fa-fw fa-cog"></i></span> Manage feeds
         </a>
       </div>
     </div>

@@ -8,6 +8,7 @@
   },
   "scripts": {
     "start": "gulp watch",
+    "start:firefox": "web-ext run -f=firefoxdeveloperedition --source-dir ./build/",
     "build": "gulp build --release"
   },
   "author": "SrKomodo",
@@ -33,6 +34,7 @@
   },
   "dependencies": {
     "bulma": "^0.6.0",
-    "font-awesome": "^4.7.0"
+    "font-awesome": "^4.7.0",
+    "xml-js": "^1.5.1"
   }
 }

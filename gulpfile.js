@@ -14,11 +14,10 @@ const htmlmin = require("gulp-htmlmin");
 const release = process.argv[3] === "--release";
 
 gulp.task("js", () => {
-  return gulp.src("src/**/*.js", { read: false })
+  return gulp.src(["src/**/*.js", "!src/**/_*.js"], { read: false })
     .pipe(tap(function (file) {
       gutil.log("bundling " + file.path);
       file.contents = browserify(file.path, { debug: !release })
-        .transform("babelify", { presets: ["env"] })
         .bundle();
     }))
     .pipe(buffer())
