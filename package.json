@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "repository": "git@github.com:SrKomodo/easy-rss.git",
   "author": "Sr Komodo <komodosr@gmail.com>",
-  "license": "MIT",
+  "license": "MPL-2.0",
   "scripts": {
     "start": "webpack --mode development --env.dev -w",
     "build": "webpack --mode production --env.prod",
