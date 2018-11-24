@@ -19,7 +19,19 @@
 
   "browser_action": {
     "browser_style": true,
-    "default_title": "Mouse Pet",
-    "default_popup": "popup.html"
+    "default_title": "Easy RSS",
+    "default_popup": "popup.html",
+    "theme_icons": [
+      {
+        "light": "logo_light.svg",
+        "dark": "logo_dark.svg",
+        "size": 16
+      },
+      {
+        "light": "logo_light.svg",
+        "dark": "logo_dark.svg",
+        "size": 32
+      }
+    ]
   }
 }
