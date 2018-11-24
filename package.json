@@ -1,40 +1,28 @@
 {
   "name": "easy-rss",
   "version": "1.0.0",
-  "description": "A simple and easy to use RSS reader extension for firefox and chrome",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/SrKomodo/easy-rss.git"
-  },
+  "repository": "git@github.com:SrKomodo/easy-rss.git",
+  "author": "Sr Komodo <komodosr@gmail.com>",
+  "license": "MIT",
   "scripts": {
-    "start": "gulp watch",
-    "start:firefox": "web-ext run -f=firefoxdeveloperedition --source-dir ./build/",
-    "build": "gulp build --release"
+    "start": "webpack --mode development --env.dev -w",
+    "build": "webpack --mode production --env.prod",
+    "dist": "yarn build && web-ext build -s dist/"
   },
-  "author": "SrKomodo",
-  "license": "GPL-3.0",
-  "bugs": {
-    "url": "https://github.com/SrKomodo/easy-rss/issues"
-  },
-  "homepage": "https://github.com/SrKomodo/easy-rss#readme",
   "devDependencies": {
-    "babel-preset-env": "^1.6.0",
-    "babelify": "^7.3.0",
-    "browserify": "^14.4.0",
-    "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^4.0.0",
-    "gulp-buffer": "0.0.2",
-    "gulp-cssnano": "^2.1.2",
-    "gulp-htmlmin": "^3.0.0",
-    "gulp-if": "^2.0.2",
-    "gulp-sass": "^3.1.0",
-    "gulp-tap": "^1.0.1",
-    "gulp-uglify": "^3.0.0",
-    "gulp-util": "^3.0.8"
-  },
-  "dependencies": {
-    "bulma": "^0.6.0",
-    "font-awesome": "^4.7.0",
-    "xml-js": "^1.5.1"
+    "copy-webpack-plugin": "^4.6.0",
+    "css-loader": "^1.0.1",
+    "mini-css-extract-plugin": "^0.4.5",
+    "node-sass": "^4.10.0",
+    "sass-loader": "^7.1.0",
+    "ts-loader": "^5.3.0",
+    "tslint": "^5.11.0",
+    "tslint-config-prettier": "^1.16.0",
+    "typescript": "^3.1.6",
+    "web-ext": "^2.9.2",
+    "web-ext-types": "^3.0.0",
+    "webpack": "^4.26.0",
+    "webpack-cli": "^3.1.2",
+    "webpack-webext-plugin": "MarZab/webpack-webext-plugin"
   }
 }

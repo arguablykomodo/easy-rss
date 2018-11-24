@@ -1,9 +1,0 @@
-{
-  "files.exclude": {
-    "build": true,
-    "node_modules": true,
-    ".eslintrc.json": true,
-    "jsconfig.json": true,
-    "LICENSE.md": true
-  }
-}
