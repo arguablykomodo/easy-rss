@@ -9,8 +9,9 @@
 }
 
 body {
-  width: 60ch;
-  min-height: 12em;
+  min-width: 60ch;
+  height: 100em;
+  overflow: hidden;
   background: $ink-80;
   color: white;
 }
@@ -51,5 +52,45 @@ nav {
   div {
     @include hover();
     padding: 0.5em 1em;
+  }
+}
+
+#entries {
+  height: calc(100vh - 3em);
+  overflow-y: scroll;
+}
+
+.entry {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  margin: 0.5em;
+  padding: 0.5em;
+  background: $ink-70;
+
+  & > div {
+    display: flex;
+    align-items: center;
+
+    &:first-child {
+      margin-bottom: 0.5em;
+    }
+  }
+
+  .icon {
+    margin-right: 1ch;
+  }
+
+  .author {
+    flex-grow: 1;
+  }
+
+  .image {
+    padding: 1em;
+
+    &:empty {
+      padding: 0;
+    }
   }
 }

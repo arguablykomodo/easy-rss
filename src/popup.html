@@ -7,6 +7,21 @@
     <link rel="stylesheet" href="popup.css" />
     <title>Easy RSS</title>
   </head>
+
+  <template id="entry">
+    <a class="entry">
+      <div>
+        <img class="icon" />
+        <div class="title"></div>
+      </div>
+      <div class="image"></div>
+      <div>
+        <div class="author"></div>
+        <div class="date"></div>
+      </div>
+    </a>
+  </template>
+
   <body>
     <nav>
       <span>EasyRSS</span> <img src="./settings.svg" id="openDropdown" />
@@ -16,6 +31,7 @@
         <div>Find feeds in current page</div>
         <div>Manage feeds</div>
       </div>
+      <div id="entries"></div>
     </main>
   </body>
   <script src="popup.js"></script>

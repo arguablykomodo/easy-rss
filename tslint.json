@@ -2,7 +2,7 @@
   "defaultSeverity": "error",
   "extends": ["tslint:recommended", "tslint-config-prettier"],
   "rules": {
-    "one-variable-per-declaration": false,
+    "interface-name": false,
     "curly": false
   }
 }

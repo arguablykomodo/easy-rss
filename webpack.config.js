@@ -7,7 +7,7 @@ module.exports = env => ({
   entry: {
     popup: "./src/popup.ts"
   },
-  devtool: env.prod ? "" : "source-map",
+  devtool: env.prod ? "" : "inline-source-map",
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].js",

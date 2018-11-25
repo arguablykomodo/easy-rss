@@ -38,5 +38,7 @@
         "size": 32
       }
     ]
-  }
+  },
+
+  "permissions": ["<all_urls>"]
 }
