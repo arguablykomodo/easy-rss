@@ -10,11 +10,16 @@
   "version": "1.0.0",
 
   "name": "Easy RSS",
-  "description": "Finally an actually usable RSS reader",
+  "description": "An RSS reader for both the common man and the power user",
   "homepage_url": "https://github.com/SrKomodo/easy-rss",
   "developer": {
     "name": "SrKomodo",
     "url": "https://github.com/SrKomodo"
+  },
+
+  "icons": {
+    "48": "logo_color.svg",
+    "96": "logo_color.svg"
   },
 
   "browser_action": {
