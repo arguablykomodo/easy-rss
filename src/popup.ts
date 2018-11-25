@@ -1,3 +1,6 @@
 import "./popup.scss";
 
-document.body.textContent = "What's up dog?";
+const dropdown = document.getElementById("dropdown")!;
+document
+  .getElementById("openDropdown")!
+  .addEventListener("click", () => dropdown.classList.toggle("open"));

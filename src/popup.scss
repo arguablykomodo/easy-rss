@@ -1,5 +1,55 @@
+@import "~photon-colors/photon-colors.scss";
+
+@mixin hover {
+  cursor: pointer;
+  transition: background 0.25s;
+  &:hover {
+    background: rgba(white, 0.1);
+  }
+}
+
 body {
-  margin: 1em;
-  background: #232323;
-  color: #aaa;
+  width: 60ch;
+  min-height: 12em;
+  background: $ink-80;
+  color: white;
+}
+
+nav {
+  height: 3em;
+  padding: 0 0 0 0.75em;
+  background: $ink-70;
+  display: flex;
+  align-items: center;
+
+  span {
+    flex-grow: 1;
+  }
+
+  img {
+    align-self: stretch;
+    padding: 0 0.75em;
+  }
+}
+
+#openDropdown {
+  @include hover();
+}
+
+#dropdown {
+  position: absolute;
+  right: 0;
+  background: $ink-70;
+  overflow: hidden;
+
+  transition: clip-path 0.25s cubic-bezier(0.07, 0.95, 0, 1);
+  clip-path: inset(0 0 100% 0);
+  &.open {
+    clip-path: inset(0 0 0 0);
+  }
+
+  div {
+    @include hover();
+    padding: 0.5em 1em;
+  }
 }
