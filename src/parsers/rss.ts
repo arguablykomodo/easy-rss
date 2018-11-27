@@ -23,8 +23,6 @@ export default (src: string, feed: Feed): undefined | Entry[] => {
     );
     if (results) {
       entry.thumbnail = results[1];
-      entry.thumbnailWidth = parseInt(results[2], 10);
-      entry.thumbnailHeight = parseInt(results[3], 10);
     }
     entries.push(entry);
   }

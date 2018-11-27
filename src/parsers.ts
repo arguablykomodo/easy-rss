@@ -14,8 +14,6 @@ interface Entry {
   author: string;
   feed: string;
   thumbnail?: string;
-  thumbnailWidth?: number;
-  thumbnailHeight?: number;
 }
 
 import atom from "./parsers/atom";

@@ -9,7 +9,6 @@
 }
 
 body {
-  min-width: 60ch;
   height: 100em;
   overflow: hidden;
   background: $ink-80;
@@ -63,34 +62,39 @@ nav {
 .entry {
   text-decoration: none;
   color: inherit;
-  display: flex;
-  flex-direction: column;
   margin: 0.5em;
   padding: 0.5em;
   background: $ink-70;
 
-  & > div {
+  align-items: center;
+  display: grid;
+  grid-gap: 1em;
+  grid-template-columns: max-content 1fr max-content;
+  grid-template-rows: max-content max-content;
+  grid-template-areas:
+    "main main image"
+    "author date image";
+
+  @each $area in main, image, author, date, image {
+    .#{$area} {
+      grid-area: $area;
+    }
+  }
+
+  .image {
+    width: 10ch;
+  }
+
+  .main {
     display: flex;
     align-items: center;
-
-    &:first-child {
-      margin-bottom: 0.5em;
-    }
   }
 
   .icon {
     margin-right: 1ch;
   }
 
-  .author {
-    flex-grow: 1;
-  }
-
-  .image {
-    padding: 1em;
-
-    &:empty {
-      padding: 0;
-    }
+  .date {
+    text-align: right;
   }
 }

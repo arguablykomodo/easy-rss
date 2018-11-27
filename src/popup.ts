@@ -12,7 +12,8 @@ const testFeed: Feed = {
   id: "yt:channel:UCJO31lXn1Uo924ha6nO8XlA",
   name: "Dolan Darkest",
   read: [],
-  url: "https://www.factorio.com/blog/rss"
+  url:
+    "https://www.youtube.com/feeds/videos.xml?channel_id=UC6nSFpj9HTCZ5t-N3Rm3-HA"
 };
 
 fetchEntries(testFeed).then(entries => {
@@ -25,12 +26,7 @@ fetchEntries(testFeed).then(entries => {
       el.querySelector(".author")!.textContent = entry.author;
       el.querySelector(".date")!.textContent = entry.date.toLocaleDateString();
       if (entry.thumbnail) {
-        const img = document.createElement("img");
-        img.classList.add("thumbnail");
-        img.src = entry.thumbnail;
-        img.width = entry.thumbnailWidth!;
-        img.height = entry.thumbnailHeight!;
-        el.querySelector(".image")!.appendChild(img);
+        (el.querySelector(".image") as HTMLImageElement).src = entry.thumbnail;
       }
       entriesEl.appendChild(el);
     }
