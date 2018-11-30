@@ -82,7 +82,21 @@ nav {
   }
 
   .image {
-    width: 10ch;
+    height: 5em;
+    transform-origin: center right;
+    transition: transform 0.25s cubic-bezier(0.07, 0.95, 0, 1);
+    &:hover {
+      transform: scale(2);
+      z-index: 1;
+    }
+  }
+
+  &:first-child .image {
+    transform-origin: top right;
+  }
+
+  &:last-child .image {
+    transform-origin: bottom right;
   }
 
   .main {
