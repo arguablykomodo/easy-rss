@@ -1,4 +1,4 @@
-import { Entry, Feed, fetchEntries } from "./parsers";
+import { Entry, Feed, fetchEntries } from "../parsers";
 import "./popup.scss";
 
 const entryTemplate = document.getElementById("entry") as HTMLTemplateElement;
@@ -8,7 +8,7 @@ document
   .getElementById("openDropdown")!
   .addEventListener("click", () => dropdown.classList.toggle("open"));
 
-/*browser.storage.sync.set({
+browser.storage.sync.set({
   feeds: [
     {
       id: "yt:channel:UCJO31lXn1Uo924ha6nO8XlA",
@@ -18,7 +18,7 @@ document
         "https://www.youtube.com/feeds/videos.xml?channel_id=UC6nSFpj9HTCZ5t-N3Rm3-HA"
     }
   ]
-});*/
+});
 
 browser.storage.sync.get("feeds").then(async storage => {
   const toFetch = [];

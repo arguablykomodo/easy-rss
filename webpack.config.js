@@ -5,7 +5,7 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = env => ({
   entry: {
-    popup: "./src/popup.ts"
+    "popup/popup": "./src/popup/popup.ts"
   },
   devtool: env.prod ? "" : "inline-source-map",
   output: {

@@ -18,23 +18,23 @@
   },
 
   "icons": {
-    "48": "logo_color.svg",
-    "96": "logo_color.svg"
+    "48": "assets/logo_color.svg",
+    "96": "assets/logo_color.svg"
   },
 
   "browser_action": {
     "browser_style": true,
     "default_title": "Easy RSS",
-    "default_popup": "popup.html",
+    "default_popup": "popup/popup.html",
     "theme_icons": [
       {
-        "light": "logo_light.svg",
-        "dark": "logo_dark.svg",
+        "light": "assets/logo_light.svg",
+        "dark": "assets/logo_dark.svg",
         "size": 16
       },
       {
-        "light": "logo_light.svg",
-        "dark": "logo_dark.svg",
+        "light": "assets/logo_light.svg",
+        "dark": "assets/logo_dark.svg",
         "size": 32
       }
     ]
