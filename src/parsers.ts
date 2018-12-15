@@ -30,6 +30,7 @@ async function fetchEntries(feed: Feed) {
     const result = parser(src, feed);
     if (result) return result;
   }
+  return [];
 }
 
 export { Feed, Entry, fetchEntries };
