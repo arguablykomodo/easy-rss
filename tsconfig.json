@@ -3,6 +3,7 @@
     "target": "es2017",
     "strict": true,
     "outDir": "dist",
+    "sourceMap": true,
     "typeRoots": ["node_modules/@types", "node_modules/web-ext-types"]
   },
   "include": ["src/**/*.ts"]

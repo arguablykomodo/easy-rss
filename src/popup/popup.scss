@@ -8,17 +8,25 @@
   }
 }
 
+@mixin shadow {
+  box-shadow: 0 4px 16px rgba(12, 12, 13, 0.2);
+}
+
 body {
-  height: 100em;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
   background: $ink-80;
   color: white;
 }
 
 nav {
+  position: sticky;
+  top: 0;
+
   height: 3em;
-  padding: 0 0 0 0.75em;
+  padding-left: 0.75em;
   background: $ink-70;
+  @include shadow();
   display: flex;
   align-items: center;
 
@@ -37,8 +45,9 @@ nav {
 }
 
 #dropdown {
-  position: absolute;
+  position: fixed;
   right: 0;
+  top: 3em;
   background: $ink-70;
   overflow: hidden;
 
@@ -55,38 +64,53 @@ nav {
 }
 
 #entries {
-  height: calc(100vh - 3em);
-  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
 }
 
 .entry {
   text-decoration: none;
   color: inherit;
-  margin: 0.5em;
+  margin: 0.25em;
   padding: 0.5em;
   background: $ink-70;
 
+  display: flex;
   align-items: center;
-  display: grid;
-  grid-gap: 1em;
-  grid-template-columns: max-content 1fr max-content;
-  grid-template-rows: max-content max-content;
-  grid-template-areas:
-    "main main image"
-    "author date image";
 
-  @each $area in main, image, author, date, image {
-    .#{$area} {
-      grid-area: $area;
+  .side {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .bottom {
+    display: flex;
+  }
+
+  .top {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1ch;
+
+    img {
+      margin-right: 1ch;
     }
   }
 
+  .author {
+    flex: 1;
+  }
+
   .image {
-    height: 5em;
+    height: 3.5em;
+    margin-left: 1em;
     transform-origin: center right;
     transition: transform 0.25s cubic-bezier(0.07, 0.95, 0, 1);
+
     &:hover {
-      transform: scale(2);
+      transform: scale(5);
       z-index: 1;
     }
   }
@@ -97,18 +121,5 @@ nav {
 
   &:last-child .image {
     transform-origin: bottom right;
-  }
-
-  .main {
-    display: flex;
-    align-items: center;
-  }
-
-  .icon {
-    margin-right: 1ch;
-  }
-
-  .date {
-    text-align: right;
   }
 }

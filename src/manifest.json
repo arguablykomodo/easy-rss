@@ -22,6 +22,10 @@
     "96": "assets/logo_color.svg"
   },
 
+  "background": {
+    "scripts": ["background.js"]
+  },
+
   "browser_action": {
     "browser_style": true,
     "default_title": "Easy RSS",
@@ -40,5 +44,5 @@
     ]
   },
 
-  "permissions": ["<all_urls>", "storage"]
+  "permissions": ["<all_urls>", "storage", "alarms"]
 }

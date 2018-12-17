@@ -8,30 +8,8 @@ document
   .getElementById("openDropdown")!
   .addEventListener("click", () => dropdown.classList.toggle("open"));
 
-browser.storage.sync.set({
-  feeds: [
-    {
-      id: "yt:channel:UCJO31lXn1Uo924ha6nO8XlA",
-      name: "Dolan Darkest",
-      read: [],
-      url:
-        "https://www.youtube.com/feeds/videos.xml?channel_id=UC6nSFpj9HTCZ5t-N3Rm3-HA"
-    }
-  ]
-});
-
-browser.storage.sync.get("feeds").then(async storage => {
-  const toFetch = [];
-  // I love typescript
-  for (const feed of (storage.feeds as unknown) as Feed[]) {
-    toFetch.push(fetchEntries(feed));
-  }
-
-  // I really love typescript
-  const entries = ([] as Entry[]).concat(...(await Promise.all(toFetch)));
-  entries.sort((a, b) => b.date.getTime() - a.date.getTime());
-
-  for (const entry of entries) {
+browser.storage.local.get("entries").then(async entries => {
+  for (const entry of (entries.entries as any) as Entry[]) {
     const el = document.importNode(entryTemplate.content, true);
     el.querySelector(".entry")!.setAttribute("href", entry.link);
     el.querySelector(".icon")!.setAttribute("src", entry.icon);
@@ -39,7 +17,10 @@ browser.storage.sync.get("feeds").then(async storage => {
     el.querySelector(".author")!.textContent = entry.author;
     el.querySelector(".date")!.textContent = entry.date.toLocaleDateString();
     if (entry.thumbnail) {
-      (el.querySelector(".image") as HTMLImageElement).src = entry.thumbnail;
+      const image = document.createElement("img");
+      image.className = "image";
+      image.src = entry.thumbnail;
+      el.querySelector(".entry")!.appendChild(image);
     }
     entriesEl.appendChild(el);
   }

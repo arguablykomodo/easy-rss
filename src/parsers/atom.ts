@@ -9,9 +9,11 @@ export default (src: string, feed: Feed): undefined | Entry[] => {
 
   const entries: Entry[] = [];
   for (const el of xml.querySelectorAll("entry")) {
+    let dateEl = el.querySelector("published");
+    if (!dateEl) dateEl = el.querySelector("updated");
     const entry: Entry = {
       author: el.querySelector("author name")!.textContent!,
-      date: new Date(el.querySelector("updated")!.textContent!),
+      date: new Date(dateEl!.textContent!),
       feed: feed.id,
       icon: `http://www.google.com/s2/favicons?domain=${getDomain(feed.url)}`,
       id: el.querySelector("id")!.textContent!,
