@@ -68,6 +68,11 @@ nav {
   flex-direction: column;
 }
 
+.no_entries {
+  padding: 2em 4em;
+  color: rgba(white, 0.5);
+}
+
 .entry {
   text-decoration: none;
   color: inherit;

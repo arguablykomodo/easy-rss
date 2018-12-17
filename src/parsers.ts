@@ -2,14 +2,13 @@ interface Feed {
   id: string;
   name: string;
   url: string;
-  read: string[];
 }
 
 interface Entry {
   id: string;
   title: string;
   link: string;
-  date: Date;
+  date: string;
   icon: string;
   author: string;
   feed: string;

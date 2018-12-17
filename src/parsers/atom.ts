@@ -13,7 +13,7 @@ export default (src: string, feed: Feed): undefined | Entry[] => {
     if (!dateEl) dateEl = el.querySelector("updated");
     const entry: Entry = {
       author: el.querySelector("author name")!.textContent!,
-      date: new Date(dateEl!.textContent!),
+      date: dateEl!.textContent!,
       feed: feed.id,
       icon: `http://www.google.com/s2/favicons?domain=${getDomain(feed.url)}`,
       id: el.querySelector("id")!.textContent!,

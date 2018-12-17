@@ -11,7 +11,7 @@ export default (src: string, feed: Feed): undefined | Entry[] => {
   for (const el of xml.querySelectorAll("item")) {
     const entry: Entry = {
       author: el.querySelector("author")!.textContent!,
-      date: new Date(el.querySelector("pubDate")!.textContent!),
+      date: el.querySelector("pubDate")!.textContent!,
       feed: feed.id,
       icon: `http://www.google.com/s2/favicons?domain=${getDomain(feed.url)}`,
       id: el.querySelector("guid")!.textContent!,
