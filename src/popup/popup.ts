@@ -11,7 +11,7 @@ document
 browser.storage.sync.get({ entries: [], read: [] }).then(results => {
   const { entries, read }: { entries: Entry[]; read: string[] } = results;
 
-  if (entries.length === 0) {
+  if (entries.length === 0 || entries.length === read.length) {
     const text = document.createElement("div");
     text.className = "no_entries";
     text.textContent = "You are all caught up!";
@@ -24,7 +24,6 @@ browser.storage.sync.get({ entries: [], read: [] }).then(results => {
     const el = document.importNode(entryTemplate.content, true);
     const entryEl = el.querySelector(".entry")!;
 
-    entryEl.setAttribute("href", entry.link);
     el.querySelector(".icon")!.setAttribute("src", entry.icon);
     el.querySelector(".title")!.textContent = entry.title;
     el.querySelector(".author")!.textContent = entry.author;
@@ -48,6 +47,7 @@ browser.storage.sync.get({ entries: [], read: [] }).then(results => {
           parseInt(await browser.browserAction.getBadgeText({}), 10) - 1
         ).toString()
       });
+      browser.tabs.create({ url: entry.link });
     });
 
     entriesEl.appendChild(el);

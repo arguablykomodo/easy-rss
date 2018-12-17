@@ -9,18 +9,18 @@
   </head>
 
   <template id="entry">
-    <a class="entry">
+    <article class="entry">
       <div class="side">
-        <div class="top">
+        <header>
           <img class="icon" />
           <div class="title"></div>
-        </div>
-        <div class="bottom">
+        </header>
+        <footer>
           <div class="author"></div>
-          <div class="date"></div>
-        </div>
+          <time class="date"></time>
+        </footer>
       </div>
-    </a>
+    </article>
   </template>
 
   <body>
@@ -32,7 +32,7 @@
       <div>Find feeds in current page</div>
       <div>Manage feeds</div>
     </div>
-    <main><div id="entries"></div></main>
+    <main id="entries"></main>
   </body>
   <script src="popup.js"></script>
 </html>

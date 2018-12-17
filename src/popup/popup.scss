@@ -15,6 +15,7 @@
 body {
   display: flex;
   flex-direction: column;
+
   background: $ink-80;
   color: white;
 }
@@ -23,20 +24,21 @@ nav {
   position: sticky;
   top: 0;
 
-  height: 3em;
-  padding-left: 0.75em;
-  background: $ink-70;
-  @include shadow();
   display: flex;
   align-items: center;
+  height: 3em;
+  padding-left: 0.75em;
+
+  background: $ink-70;
+  @include shadow();
 
   span {
     flex-grow: 1;
   }
 
   img {
-    align-self: stretch;
     padding: 0 0.75em;
+    align-self: stretch;
   }
 }
 
@@ -48,8 +50,9 @@ nav {
   position: fixed;
   right: 0;
   top: 3em;
-  background: $ink-70;
   overflow: hidden;
+
+  background: $ink-70;
 
   transition: clip-path 0.25s cubic-bezier(0.07, 0.95, 0, 1);
   clip-path: inset(0 0 100% 0);
@@ -74,14 +77,13 @@ nav {
 }
 
 .entry {
-  text-decoration: none;
-  color: inherit;
-  margin: 0.25em;
-  padding: 0.5em;
-  background: $ink-70;
-
   display: flex;
   align-items: center;
+  margin: 0.25em;
+  padding: 0.5em;
+
+  background: $ink-70;
+  cursor: pointer;
 
   .side {
     flex: 1;
@@ -90,11 +92,11 @@ nav {
     justify-content: space-between;
   }
 
-  .bottom {
+  footer {
     display: flex;
   }
 
-  .top {
+  header {
     display: flex;
     align-items: center;
     margin-bottom: 1ch;
@@ -112,8 +114,8 @@ nav {
     height: 3.5em;
     margin-left: 1em;
     transform-origin: center right;
-    transition: transform 0.25s cubic-bezier(0.07, 0.95, 0, 1);
 
+    transition: transform 0.25s cubic-bezier(0.07, 0.95, 0, 1);
     &:hover {
       transform: scale(5);
       z-index: 1;
