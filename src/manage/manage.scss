@@ -1,0 +1,67 @@
+@import "~photon-colors/photon-colors.scss";
+@import "../globals";
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin: 1em;
+
+  background: $ink-80;
+  color: white;
+  font: caption;
+  -moz-user-select: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  padding: 0 1em 1em;
+  margin-bottom: 1em;
+  background: $ink-70;
+}
+
+#settings {
+  .setting {
+    display: flex;
+
+    input {
+      flex: 1;
+    }
+  }
+
+  button {
+    margin-top: 1em;
+  }
+}
+
+#feeds {
+  header {
+    display: flex;
+    align-items: center;
+    margin: 1em 0 0.5em;
+    h2 {
+      flex: 1;
+      margin: 0;
+    }
+  }
+
+  .feed {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    grid-gap: 0.5em;
+    align-items: center;
+    padding: 1em;
+    margin: 0.5em 0;
+    background: $ink-60;
+
+    label {
+      text-align: right;
+    }
+  }
+}

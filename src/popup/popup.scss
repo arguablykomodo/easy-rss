@@ -1,16 +1,5 @@
 @import "~photon-colors/photon-colors.scss";
-
-@mixin hover {
-  cursor: pointer;
-  transition: background 0.25s;
-  &:hover {
-    background: rgba(white, 0.1);
-  }
-}
-
-@mixin shadow {
-  box-shadow: 0 4px 16px rgba(12, 12, 13, 0.2);
-}
+@import "../globals";
 
 body {
   display: flex;

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="./manage.css" />
+    <title>Easy RSS</title>
+  </head>
+
+  <template id="feed">
+    <article class="feed">
+      <label>Name:</label> <input type="text" class="name" />
+      <label>Url:</label> <input type="url" class="url" />
+    </article>
+  </template>
+
+  <body>
+    <h1>Easy RSS</h1>
+    <section id="settings">
+      <h2>Settings</h2>
+      <div class="setting">
+        <label for="interval">Fetch Interval (in minutes)</label>
+        <input type="range" id="interval" min="1" max="60" />
+        <output id="intervalOutput">1 minute</output>
+      </div>
+      <button id="saveSettings">Save</button>
+    </section>
+    <section id="feeds">
+      <header>
+        <h2>Feeds</h2>
+        <button id="saveFeeds">Save</button>
+      </header>
+    </section>
+    <script src="manage.js"></script>
+  </body>
+</html>

@@ -1,11 +1,11 @@
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const WebpackWebExt = require("webpack-webext-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = env => ({
   entry: {
     "popup/popup": "./src/popup/popup.ts",
+    "manage/manage": "./src/manage/manage.ts",
     background: "./src/background.ts"
   },
   devtool: env.prod ? "" : "inline-source-map",
@@ -22,7 +22,11 @@ module.exports = env => ({
       },
       {
         test: /\.scss$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
+        use: [
+          { loader: MiniCssExtractPlugin.loader, options: { sourceMap: true } },
+          { loader: "css-loader", options: { sourceMap: true } },
+          { loader: "sass-loader", options: { sourceMap: true } }
+        ]
       }
     ]
   },
@@ -37,13 +41,6 @@ module.exports = env => ({
         ignore: ["*.ts", "*.scss"]
       }
     ]),
-    new MiniCssExtractPlugin(),
-    env.prod
-      ? () => {}
-      : new WebpackWebExt({
-          runOnce: true,
-          maxRetries: 1,
-          argv: ["run", "-s", "dist/"]
-        })
+    new MiniCssExtractPlugin()
   ]
 });

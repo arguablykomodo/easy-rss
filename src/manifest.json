@@ -44,5 +44,11 @@
     ]
   },
 
+  "options_ui": {
+    "page": "manage/manage.html",
+    "open_in_tab": true,
+    "browser_style": true
+  },
+
   "permissions": ["<all_urls>", "storage", "alarms"]
 }

@@ -4,9 +4,13 @@ import "./popup.scss";
 const entryTemplate = document.getElementById("entry") as HTMLTemplateElement;
 const entriesEl = document.getElementById("entries")!;
 const dropdown = document.getElementById("dropdown")!;
+
 document
   .getElementById("openDropdown")!
   .addEventListener("click", () => dropdown.classList.toggle("open"));
+document
+  .getElementById("manage")!
+  .addEventListener("click", () => browser.runtime.openOptionsPage());
 
 browser.storage.sync.get({ entries: [], read: [] }).then(results => {
   const { entries, read }: { entries: Entry[]; read: string[] } = results;

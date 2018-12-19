@@ -53,7 +53,17 @@ async function fetch() {
 
   browser.storage.sync.set({ entries: entries as any, read });
 }
-
-browser.alarms.create("fetch", { periodInMinutes: 1 });
-browser.alarms.onAlarm.addListener(fetch);
 fetch();
+
+browser.storage.sync.get({ interval: 5 }).then(results => {
+  browser.alarms.create("fetch", { periodInMinutes: results.interval });
+  browser.alarms.onAlarm.addListener(fetch);
+});
+
+browser.storage.onChanged.addListener(async changes => {
+  if (!changes.interval) return;
+  await browser.alarms.clear("fetch");
+  browser.alarms.create("fetch", {
+    periodInMinutes: changes.interval.newValue
+  });
+});
