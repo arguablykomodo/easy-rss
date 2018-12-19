@@ -5,6 +5,10 @@ const entryTemplate = document.getElementById("entry") as HTMLTemplateElement;
 const entriesEl = document.getElementById("entries")!;
 const dropdown = document.getElementById("dropdown")!;
 
+document.getElementById("find")!.addEventListener("click", () => {
+  browser.tabs.executeScript(undefined, { file: "/find.js" });
+});
+
 document
   .getElementById("openDropdown")!
   .addEventListener("click", () => dropdown.classList.toggle("open"));

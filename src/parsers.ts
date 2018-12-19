@@ -1,5 +1,4 @@
 interface Feed {
-  id: string;
   name: string;
   url: string;
 }
@@ -11,7 +10,6 @@ interface Entry {
   date: string;
   icon: string;
   author: string;
-  feed: string;
   thumbnail?: string;
 }
 

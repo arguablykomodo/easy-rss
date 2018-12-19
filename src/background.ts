@@ -1,21 +1,5 @@
 import { Entry, Feed, fetchEntries } from "./parsers";
 
-browser.storage.sync.set({
-  feeds: [
-    {
-      id: "yt:channel:UCJO31lXn1Uo924ha6nO8XlA",
-      name: "Extra Credits",
-      url:
-        "https://www.youtube.com/feeds/videos.xml?channel_id=UCCODtTcd5M1JavPCOr_Uydg"
-    },
-    {
-      id: "factorio",
-      name: "Factorio Blog",
-      url: "https://www.factorio.com/blog/rss"
-    }
-  ]
-});
-
 async function fetch() {
   const {
     feeds,
@@ -49,7 +33,8 @@ async function fetch() {
       unread++;
     }
   }
-  browser.browserAction.setBadgeText({ text: unread.toString() });
+  if (unread !== 0)
+    browser.browserAction.setBadgeText({ text: unread.toString() });
 
   browser.storage.sync.set({ entries: entries as any, read });
 }
@@ -61,9 +46,12 @@ browser.storage.sync.get({ interval: 5 }).then(results => {
 });
 
 browser.storage.onChanged.addListener(async changes => {
-  if (!changes.interval) return;
-  await browser.alarms.clear("fetch");
-  browser.alarms.create("fetch", {
-    periodInMinutes: changes.interval.newValue
-  });
+  if (changes.feeds) {
+    fetch();
+  } else if (changes.interval) {
+    await browser.alarms.clear("fetch");
+    browser.alarms.create("fetch", {
+      periodInMinutes: changes.interval.newValue
+    });
+  }
 });

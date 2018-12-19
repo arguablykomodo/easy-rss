@@ -14,7 +14,6 @@ export default (src: string, feed: Feed): undefined | Entry[] => {
     const entry: Entry = {
       author: el.querySelector("author name")!.textContent!,
       date: dateEl!.textContent!,
-      feed: feed.id,
       icon: `http://www.google.com/s2/favicons?domain=${getDomain(feed.url)}`,
       id: el.querySelector("id")!.textContent!,
       link: el.querySelector("link")!.getAttribute("href")!,
