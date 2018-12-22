@@ -2,9 +2,8 @@
 @import "../globals";
 
 body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr max-content 1fr;
 
   margin: 1em;
 
@@ -12,6 +11,10 @@ body {
   color: white;
   font: caption;
   -moz-user-select: none;
+
+  & > * {
+    grid-column: 2 / 3;
+  }
 }
 
 * {
@@ -64,5 +67,11 @@ section {
     label {
       text-align: right;
     }
+  }
+
+  .no_feeds {
+    padding: 1em 2em;
+    color: rgba(white, 0.5);
+    text-align: center;
   }
 }
