@@ -90,8 +90,16 @@ nav {
     align-items: center;
     margin-bottom: 1ch;
 
-    img {
+    .icon {
       margin-right: 1ch;
+    }
+
+    .title {
+      flex: 1;
+    }
+
+    .read {
+      margin-left: 1ch;
     }
   }
 

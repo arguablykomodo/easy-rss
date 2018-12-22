@@ -46,7 +46,7 @@ browser.storage.sync.get({ entries: [], read: [] }).then(results => {
       entryEl.appendChild(image);
     }
 
-    entryEl.addEventListener("click", async () => {
+    entryEl.addEventListener("click", async e => {
       entryEl.remove();
       read.push(entry.id);
       browser.storage.sync.set({ read });
@@ -55,7 +55,8 @@ browser.storage.sync.get({ entries: [], read: [] }).then(results => {
           parseInt(await browser.browserAction.getBadgeText({}), 10) - 1
         ).toString()
       });
-      browser.tabs.create({ url: entry.link });
+      if ((e.target as HTMLImageElement).className !== "read")
+        browser.tabs.create({ url: entry.link });
     });
 
     entriesEl.appendChild(el);
