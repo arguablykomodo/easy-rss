@@ -2,6 +2,9 @@
 @import "../globals";
 
 body {
+  min-width: 40ch;
+  min-height: 10em;
+
   display: flex;
   flex-direction: column;
 
@@ -58,10 +61,12 @@ nav {
 #entries {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  flex: 1;
 }
 
 .no_entries {
-  padding: 2em 4em;
+  margin: auto;
   color: rgba(white, 0.5);
 }
 

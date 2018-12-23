@@ -15,6 +15,13 @@ document
 document
   .getElementById("manage")!
   .addEventListener("click", () => browser.runtime.openOptionsPage());
+document.getElementById("clear")!.addEventListener("click", async () => {
+  const entries: Entry[] = (await browser.storage.sync.get({ entries: [] }))
+    .entries;
+  browser.storage.sync.set({ read: entries.map(e => e.id) });
+  browser.browserAction.setBadgeText({ text: "" });
+  location.reload();
+});
 
 browser.storage.sync.get({ entries: [], read: [] }).then(results => {
   const { entries, read }: { entries: Entry[]; read: string[] } = results;
