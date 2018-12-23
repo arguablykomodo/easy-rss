@@ -55,6 +55,10 @@ section {
     }
   }
 
+  #sync {
+    margin: 0.5em 0;
+  }
+
   .feed {
     display: grid;
     grid-template-columns: max-content 1fr;
