@@ -10,8 +10,8 @@
 
   <template id="feed">
     <article class="feed">
-      <label>Name:</label> <input type="text" class="name" />
-      <label>Url:</label> <input type="url" class="url" />
+      <label>Name:</label> <input type="text" class="name" /> <div></div>
+      <label>Url:</label> <input type="url" class="url" /> <img src="../assets/delete.svg" class="delete" />
     </article>
   </template>
 
@@ -27,10 +27,7 @@
       <button id="saveSettings">Save</button>
     </section>
     <section id="feeds">
-      <header>
-        <h2>Feeds</h2>
-        <button id="saveFeeds">Save</button>
-      </header>
+      <h2>Feeds</h2>
       <button id="sync">Sync YouTube subscriptions</button>
     </section>
     <script src="manage.js"></script>

@@ -33,8 +33,9 @@ async function fetch() {
       unread++;
     }
   }
-  if (unread !== 0)
-    browser.browserAction.setBadgeText({ text: unread.toString() });
+  browser.browserAction.setBadgeText({
+    text: unread === 0 ? "" : unread.toString()
+  });
 
   browser.storage.sync.set({ entries: entries as any, read });
 }

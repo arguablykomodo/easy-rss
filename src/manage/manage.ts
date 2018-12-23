@@ -28,12 +28,18 @@ browser.storage.sync.get({ interval: 5, feeds: [] }).then(results => {
     text.textContent = "You have no feeds. Go find some!";
     feedsEl.appendChild(text);
   }
-  for (const feed of feeds) {
+
+  feeds.forEach((feed, i) => {
     const el = document.importNode(feedTemplate.content, true);
     (el.querySelector(".name") as HTMLInputElement).value = feed.name;
     (el.querySelector(".url") as HTMLInputElement).value = feed.url;
+    el.querySelector(".delete")!.addEventListener("click", () => {
+      feeds.splice(i, 1);
+      browser.storage.sync.set({ feeds: feeds as any });
+      location.reload();
+    });
     feedsEl.appendChild(el);
-  }
+  });
 });
 
 document.getElementById("sync")!.addEventListener("click", async () => {

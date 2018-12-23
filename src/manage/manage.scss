@@ -44,15 +44,11 @@ section {
 }
 
 #feeds {
-  header {
+  h2 {
     display: flex;
     align-items: center;
     margin: 1em 0 0.5em;
     min-width: 20ch;
-    h2 {
-      flex: 1;
-      margin: 0;
-    }
   }
 
   #sync {
@@ -61,7 +57,7 @@ section {
 
   .feed {
     display: grid;
-    grid-template-columns: max-content 1fr;
+    grid-template-columns: max-content 1fr max-content;
     grid-gap: 0.5em;
     align-items: center;
     padding: 1em;
@@ -70,6 +66,16 @@ section {
 
     label {
       text-align: right;
+    }
+
+    .delete {
+      padding: 4px;
+      border-radius: 4px;
+      @include hover();
+
+      &:active {
+        background: rgba(black, 0.1);
+      }
     }
   }
 
