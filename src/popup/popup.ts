@@ -26,7 +26,9 @@ browser.storage.sync.get({ entries: [], read: [] }).then(results => {
     entriesEl.appendChild(text);
   }
 
+  let i = 0;
   for (const entry of entries) {
+    if (i > 100) break;
     if (read.indexOf(entry.id) !== -1) continue;
 
     const el = document.importNode(entryTemplate.content, true);
@@ -60,5 +62,6 @@ browser.storage.sync.get({ entries: [], read: [] }).then(results => {
     });
 
     entriesEl.appendChild(el);
+    i++;
   }
 });
