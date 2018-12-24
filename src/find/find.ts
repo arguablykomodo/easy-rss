@@ -1,4 +1,4 @@
-import { Feed } from "../parsers";
+import { Feed } from "../defs";
 import "./find.scss";
 
 const link = document.createElement("a");

@@ -7,7 +7,7 @@ module.exports = env => ({
     "popup/popup": "./src/popup/popup.ts",
     "manage/manage": "./src/manage/manage.ts",
     "find/find": "./src/find/find.ts",
-    background: "./src/background.ts"
+    "background/background": "./src/background/background.ts"
   },
   devtool: env.prod ? "" : "inline-source-map",
   output: {

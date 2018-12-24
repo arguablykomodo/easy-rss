@@ -4,6 +4,7 @@
   "rules": {
     "interface-name": false,
     "curly": false,
-    "no-shadowed-variable": false
+    "no-shadowed-variable": false,
+    "forin": false
   }
 }

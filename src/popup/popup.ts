@@ -1,4 +1,4 @@
-import { Entry } from "../parsers";
+import { Entry } from "../defs";
 import "./popup.scss";
 
 const entryTemplate = document.getElementById("entry") as HTMLTemplateElement;

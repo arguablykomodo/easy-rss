@@ -1,34 +1,11 @@
-import { getDomain } from "./utils";
-
-interface Feed {
-  name: string;
-  url: string;
-}
-
-interface Entry {
-  id: string;
-  title: string;
-  link: string;
-  date: string;
-  icon: string;
-  author: string;
-  thumbnail?: string;
-}
+import { Entry, Feed } from "../defs";
 
 interface Option {
   selector: string;
   attribute?: string;
 }
 
-interface Parser {
-  author: Option[];
-  date: Option[];
-  id: Option[];
-  link: Option[];
-  title: Option[];
-}
-
-const attributes: Parser = {
+const attributes: { [x: string]: Option[] } = {
   author: [{ selector: "author name" }, { selector: "author" }],
   date: [
     { selector: "published" },
@@ -40,34 +17,36 @@ const attributes: Parser = {
   title: [{ selector: "title" }]
 };
 
-type Prop = "id" | "title" | "link" | "date" | "author";
-
 function parse(el: Element, feed: Feed) {
   const entry: any = {};
 
-  for (const prop of ["id", "title", "link", "date", "author"] as Prop[]) {
-    const options = attributes[prop] as Option[];
+  for (const attribute in attributes) {
+    const options = attributes[attribute];
     for (const option of options) {
-      if (entry[prop]) continue;
+      if (entry[attribute]) continue;
       const element = el.querySelector(option.selector);
       if (element) {
-        if (option.attribute) {
-          entry[prop] = element.getAttribute(option.attribute)!;
-        } else {
-          entry[prop] = element.textContent!;
-        }
+        if (option.attribute)
+          entry[attribute] = element.getAttribute(option.attribute)!;
+        else entry[attribute] = element.textContent!;
       }
     }
-    if (!entry[prop]) entry[prop] = "";
+    if (!entry[attribute]) entry[attribute] = "";
   }
 
+  // Get icon
   entry.icon =
-    "http://www.google.com/s2/favicons?domain=" + getDomain(feed.url);
+    "http://www.google.com/s2/favicons?domain=" +
+    feed.url
+      .replace("http://", "")
+      .replace("https://", "")
+      .split(/[/?#]/)[0];
 
+  // Get thumbnail
   const results = /<media:thumbnail.+url="(.+?)".*\/>/.exec(el.innerHTML);
   if (results) entry.thumbnail = results[1];
 
-  return (entry as any) as Entry;
+  return entry as Entry;
 }
 
 async function fetchEntries(feed: Feed) {
@@ -80,4 +59,4 @@ async function fetchEntries(feed: Feed) {
   return entries;
 }
 
-export { Feed, Entry, fetchEntries };
+export { fetchEntries };
