@@ -6,7 +6,8 @@ const entriesEl = document.getElementById("entries")!;
 const dropdown = document.getElementById("dropdown")!;
 
 document.getElementById("find")!.addEventListener("click", () => {
-  browser.tabs.executeScript(undefined, { file: "/find.js" });
+  browser.tabs.executeScript(undefined, { file: "/find/find.js" });
+  browser.tabs.insertCSS(undefined, { file: "/find/find.css" });
 });
 
 document

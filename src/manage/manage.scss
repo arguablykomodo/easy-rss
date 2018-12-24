@@ -1,5 +1,5 @@
 @import "~photon-colors/photon-colors.scss";
-@import "../globals";
+@import "../utils";
 
 body {
   display: grid;
@@ -53,6 +53,23 @@ section {
 
   #sync {
     margin: 0.5em 0;
+  }
+
+  .buttonGroup {
+    display: flex;
+    margin-bottom: 1em;
+
+    button {
+      flex: 1;
+
+      &:first-child {
+        margin-right: 0.25em;
+      }
+
+      &:last-child {
+        margin-left: 0.25em;
+      }
+    }
   }
 
   .feed {

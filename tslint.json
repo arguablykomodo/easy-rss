@@ -3,6 +3,7 @@
   "extends": ["tslint:recommended", "tslint-config-prettier"],
   "rules": {
     "interface-name": false,
-    "curly": false
+    "curly": false,
+    "no-shadowed-variable": false
   }
 }
