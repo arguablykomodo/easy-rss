@@ -15,9 +15,6 @@ for (const f of feedLinks) {
   });
 }
 
-/*const prompt =
-  "Add the following feeds?\n" + newFeeds.map(f => f.name).join("\n");*/
-
 if (newFeeds.length === 0) alert("Sorry, no feeds were found");
 else {
   const div = document.createElement("div");
