@@ -44,3 +44,6 @@ browser.storage.sync.get({ interval: 5, feeds: [] }).then(results => {
 
 import { sync } from "./sync";
 document.getElementById("sync")!.addEventListener("click", sync);
+
+import { exportFeeds } from "./export";
+document.getElementById("export")!.addEventListener("click", exportFeeds);

@@ -10,8 +10,10 @@
 
   <template id="feed">
     <article class="feed">
-      <label>Name:</label> <input type="text" class="name" /> <div></div>
-      <label>Url:</label> <input type="url" class="url" /> <img src="../assets/delete.svg" class="delete" />
+      <label>Name:</label> <input type="text" class="name" />
+      <div></div>
+      <label>Url:</label> <input type="url" class="url" />
+      <img src="../assets/delete.svg" class="delete" />
     </article>
   </template>
 
@@ -31,7 +33,8 @@
       <button id="sync">Sync YouTube subscriptions</button>
       <div class="buttonGroup">
         <button id="import">Import from .opml</button>
-        <button id="import">Export to .opml</button>
+        <button id="export">Export to .opml</button>
+        <a id="download" download="feeds.opml"></a>
       </div>
     </section>
     <script src="manage.js"></script>
