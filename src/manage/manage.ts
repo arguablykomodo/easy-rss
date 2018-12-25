@@ -47,3 +47,9 @@ document.getElementById("sync")!.addEventListener("click", sync);
 
 import { exportFeeds } from "./export";
 document.getElementById("export")!.addEventListener("click", exportFeeds);
+
+import { importFeeds } from "./import";
+const upload = document.getElementById("upload") as HTMLInputElement;
+const importEl = document.getElementById("import")!;
+importEl.addEventListener("click", () => upload.click());
+upload.addEventListener("change", importFeeds);
