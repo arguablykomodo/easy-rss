@@ -20,9 +20,9 @@ else {
   const div = document.createElement("div");
   const shadow = div.attachShadow({ mode: "open" });
   (div.style as any).all = "initial";
-  shadow.innerHTML = `
-  <link rel="stylesheet" href="${browser.runtime.getURL("find/find.css")}" />
-  <div id="dialog">
+
+  const html = `<div id="dialog">
+    <link rel="stylesheet" href="${browser.runtime.getURL("find/find.css")}" />
     <h2>Add the following feeds?</h2>
     <div id="feeds">
       ${newFeeds
@@ -34,6 +34,10 @@ else {
       <button id="no">No</button>
     </div>
   </div>`;
+  const parser = new DOMParser();
+  shadow.appendChild(
+    parser.parseFromString(html, "text/html").getElementById("dialog")!
+  );
   document.body.appendChild(div);
 
   shadow

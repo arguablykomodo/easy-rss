@@ -13,3 +13,12 @@ Easy RSS includes features such as:
 - Synchronizing your YouTube subscriptions, so you no longer have to worry about a spooky algorithm controlling what you see (say goodbye to "hitting that bell")
 - Importing and exporting your feeds to and from other RSS readers, so that you can easily transition to RSS reader (and I guess you can also transition to another reader, but I shouldn't say that if I want people to use my extension)
 - An easy and simple to understand modern UI that makes sure you are never lost in settings pages and Windows XP-esque dialogs
+
+## Building
+
+1. Make sure you have yarn installed
+2. Run `yarn install`
+3. Run `yarn dist`
+4. Enjoy the compiled code in the `dist` folder and the extension .zip file in `web-ext-artifacts`!
+5. ...
+6. Profit!
