@@ -19,7 +19,7 @@
 
   <body>
     <h1>Easy RSS</h1>
-    <section id="settings">
+    <section>
       <h2>Settings</h2>
       <div class="setting">
         <label for="interval">Fetch Interval (in minutes)</label>
@@ -28,7 +28,7 @@
       </div>
       <button id="saveSettings">Save</button>
     </section>
-    <section id="feeds">
+    <section>
       <h2>Feeds</h2>
       <button id="sync">Sync YouTube subscriptions</button>
       <div class="buttonGroup">
@@ -37,6 +37,7 @@
         <button id="export">Export to .opml</button>
         <a id="download" download="feeds.opml"></a>
       </div>
+      <div id="feeds"></div>
     </section>
     <script src="manage.js"></script>
   </body>

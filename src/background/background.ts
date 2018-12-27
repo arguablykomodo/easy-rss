@@ -28,16 +28,6 @@ async function fetch() {
     }
   }
 
-  let unread = 0;
-  for (const entry of entries) {
-    if (read.indexOf(entry.id) === -1) {
-      unread++;
-    }
-  }
-  browser.browserAction.setBadgeText({
-    text: unread === 0 ? "" : unread.toString()
-  });
-
   browser.storage.sync.set({ entries: entries as any, read });
 }
 fetch();
@@ -50,10 +40,27 @@ browser.storage.sync.get({ interval: 5 }).then(results => {
 browser.storage.onChanged.addListener(async changes => {
   if (changes.feeds) {
     fetch();
-  } else if (changes.interval) {
+  }
+
+  if (changes.interval) {
     await browser.alarms.clear("fetch");
     browser.alarms.create("fetch", {
       periodInMinutes: changes.interval.newValue
+    });
+  }
+
+  if (changes.read || changes.entries) {
+    const {
+      entries,
+      read
+    }: { entries: Entry[]; read: string[] } = await browser.storage.sync.get({
+      entries: [],
+      read: []
+    });
+
+    const unread = entries.length - read.length;
+    browser.browserAction.setBadgeText({
+      text: unread === 0 ? "" : unread.toString()
     });
   }
 });

@@ -25,8 +25,7 @@ async function sync() {
       if (feeds[i].url.startsWith("https://www.youtube.com/feeds/videos.xml"))
         feeds.splice(i, 1);
 
-    await browser.storage.sync.set({ feeds: feeds.concat(newFeeds) as any });
-    location.reload();
+    browser.storage.sync.set({ feeds: feeds.concat(newFeeds) as any });
   }
 }
 

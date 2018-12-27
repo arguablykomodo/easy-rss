@@ -29,78 +29,74 @@ section {
   background: $ink-70;
 }
 
-#settings {
-  .setting {
-    display: flex;
+.setting {
+  display: flex;
 
-    input {
-      flex: 1;
-    }
-  }
-
-  button {
-    margin-top: 1em;
+  input {
+    flex: 1;
   }
 }
 
-#feeds {
-  h2 {
-    display: flex;
-    align-items: center;
-    margin: 1em 0 0.5em;
-    min-width: 20ch;
-  }
+#saveSettings {
+  margin-top: 1em;
+}
 
-  #sync {
-    margin: 0.5em 0;
-  }
+h2 {
+  display: flex;
+  align-items: center;
+  margin: 1em 0 0.5em;
+  min-width: 20ch;
+}
 
-  .buttonGroup {
-    display: flex;
-    margin-bottom: 1em;
+#sync {
+  margin: 0.5em 0;
+}
 
-    button {
-      flex: 1;
+.buttonGroup {
+  display: flex;
+  margin-bottom: 1em;
 
-      &:first-child {
-        margin-right: 0.25em;
-      }
+  button {
+    flex: 1;
 
-      &:last-child {
-        margin-left: 0.25em;
-      }
-    }
-  }
-
-  .feed {
-    display: grid;
-    grid-template-columns: max-content 1fr max-content;
-    grid-gap: 0.5em;
-    align-items: center;
-    padding: 1em;
-    margin: 0.5em 0;
-    background: $ink-60;
-
-    label {
-      text-align: right;
+    &:first-child {
+      margin-right: 0.25em;
     }
 
-    .delete {
-      padding: 4px;
-      border-radius: 4px;
-      @include hover();
-
-      &:active {
-        background: rgba(black, 0.1);
-      }
+    &:last-child {
+      margin-left: 0.25em;
     }
   }
+}
 
-  .no_feeds {
-    padding: 1em 2em;
-    color: rgba(white, 0.5);
-    text-align: center;
+.feed {
+  display: grid;
+  grid-template-columns: max-content 1fr max-content;
+  grid-gap: 0.5em;
+  align-items: center;
+  padding: 1em;
+  margin: 0.5em 0;
+  background: $ink-60;
+
+  label {
+    text-align: right;
   }
+
+  .delete {
+    padding: 4px;
+    border-radius: 4px;
+    @include hover();
+
+    &:active {
+      background: rgba(black, 0.1);
+    }
+  }
+}
+
+.no_feeds {
+  padding: 1em 2em;
+  color: rgba(white, 0.5);
+  text-align: center;
 }
 
 #download,
