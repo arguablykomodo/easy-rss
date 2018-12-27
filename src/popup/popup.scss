@@ -2,7 +2,7 @@
 @import "../utils";
 
 body {
-  min-width: 40ch;
+  min-width: 80ch;
   min-height: 10em;
 
   display: flex;
@@ -14,6 +14,7 @@ body {
 
 nav {
   position: sticky;
+  z-index: 1;
   top: 0;
 
   display: flex;
@@ -43,6 +44,7 @@ nav {
   right: 0;
   top: 3em;
   overflow: hidden;
+  z-index: 1;
 
   background: $ink-70;
 
@@ -61,7 +63,6 @@ nav {
 #entries {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   flex: 1;
 }
 
@@ -104,7 +105,29 @@ nav {
     }
 
     .read {
+      position: relative;
+      width: 16px;
+      height: 16px;
       margin-left: 1ch;
+
+      &::after {
+        display: block;
+        position: absolute;
+        width: 12ch;
+
+        content: "Mark as read";
+        text-align: center;
+
+        transform: translate(calc(-50% + 1ch), -100%);
+        background: rgba(black, 0.5);
+        border-radius: 4px;
+        opacity: 0;
+      }
+
+      &:hover::after {
+        transition: opacity 1s cubic-bezier(1, 0, 0, -0.6);
+        opacity: 1;
+      }
     }
   }
 
