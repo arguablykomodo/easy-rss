@@ -1,6 +1,11 @@
 @import "~photon-colors/photon-colors.scss";
 @import "../utils";
 
+html {
+  overflow-x: hidden;
+  scrollbar-color: $ink-60 $ink-70;
+}
+
 body {
   min-width: 80ch;
   min-height: 10em;
