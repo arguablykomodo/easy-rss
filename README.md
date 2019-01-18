@@ -22,3 +22,13 @@ Easy RSS includes features such as:
 4. Enjoy the compiled code in the `dist` folder and the extension .zip file in `web-ext-artifacts`!
 5. ...
 6. Profit!
+
+## Screenshots
+
+![Add Feeds](images/add_feeds.png "Add Feeds")
+
+![Empty Popup](images/empty_popup.png "Empty Popup")
+
+![Full Popup](images/full_popup.png "Full Popup")
+
+![Settings](images/settings.png "Settings")
