@@ -20,14 +20,6 @@ async function fetch() {
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );
 
-  // Remove old read entries
-  let i = read.length;
-  while (i--) {
-    if (!entries.some(entry => entry.id === read[i])) {
-      read.splice(i, 1);
-    }
-  }
-
   browser.storage.sync.set({ entries: entries as any, read });
 }
 fetch();
