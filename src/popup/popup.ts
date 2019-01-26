@@ -22,9 +22,17 @@ document
 
 // Mark all as read
 document.getElementById("clear")!.addEventListener("click", async () => {
-  const entries: Entry[] = (await browser.storage.sync.get({ entries: [] }))
-    .entries;
-  browser.storage.sync.set({ read: entries.map(e => e.id) });
+  const {
+    entries,
+    read
+  }: { entries: Entry[]; read: string[] } = await browser.storage.sync.get({
+    entries: [],
+    read: []
+  });
+
+  for (const entry of entries)
+    if (read.indexOf(entry.id) === -1) read.push(entry.id);
+  browser.storage.sync.set({ read });
 });
 
 populateEntries();

@@ -14,7 +14,9 @@ async function populateEntries() {
 
   entriesEl.innerHTML = "";
 
-  if (entries.length === 0 || entries.length === read.length) {
+  let unread = 0;
+  for (const entry of entries) if (read.indexOf(entry.id) === -1) unread++;
+  if (unread === 0) {
     const text = document.createElement("div");
     text.className = "no_entries";
     text.textContent = "You are all caught up!";
