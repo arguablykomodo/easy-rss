@@ -1,0 +1,16 @@
+#dialog
+  link(rel="stylesheet", href=css)
+  if feeds.length === 0
+    h2 Sorry, no feeds were found
+    button#exit Ok
+  else
+    h2 Add the following feeds?
+    #feeds
+      each feed in feeds
+        div
+          input.enabled(type="checkbox")
+          input.name(type="text" value=feed.name)
+          input.url(type="hidden" value=feed.url)
+    #buttons
+      button#add Yes
+      button#exit No
