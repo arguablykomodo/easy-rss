@@ -13,12 +13,26 @@ async function populateFeeds(feeds: Feed[]) {
 
   feeds.forEach((feed, i) => {
     const el = document.importNode(feedTemplate.content, true);
-    (el.querySelector(".name") as HTMLInputElement).value = feed.name;
-    (el.querySelector(".url") as HTMLInputElement).value = feed.url;
+
+    const name = el.querySelector(".name") as HTMLInputElement;
+    name.value = feed.name;
+    name.addEventListener("change", () => {
+      feeds[i].name = name.value;
+      browser.storage.sync.set({ feeds: feeds as any });
+    });
+
+    const url = el.querySelector(".url") as HTMLInputElement;
+    url.value = feed.url;
+    url.addEventListener("change", () => {
+      feeds[i].url = url.value;
+      browser.storage.sync.set({ feeds: feeds as any });
+    });
+
     el.querySelector(".delete")!.addEventListener("click", () => {
       feeds.splice(i, 1);
       browser.storage.sync.set({ feeds: feeds as any });
     });
+
     feedsEl.appendChild(el);
   });
 }
