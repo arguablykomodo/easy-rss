@@ -1,5 +1,3 @@
-import { Entry, Feed } from "../defs";
-
 interface Option {
   selector: string;
   attribute?: string;

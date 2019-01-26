@@ -1,5 +1,3 @@
-import { Feed } from "../defs";
-
 const link = document.getElementById("download") as HTMLAnchorElement;
 
 async function exportFeeds() {

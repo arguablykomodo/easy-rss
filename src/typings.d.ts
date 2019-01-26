@@ -12,5 +12,3 @@ interface Entry {
   author: string;
   thumbnail?: string;
 }
-
-export { Feed, Entry };

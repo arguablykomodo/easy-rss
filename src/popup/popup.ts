@@ -1,4 +1,3 @@
-import { Entry } from "../defs";
 import { populateEntries } from "./populate";
 import "./popup.scss";
 

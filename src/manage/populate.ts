@@ -1,5 +1,3 @@
-import { Feed } from "../defs";
-
 const feedTemplate = document.getElementById("feed") as HTMLTemplateElement;
 const feedsEl = document.getElementById("feeds")!;
 

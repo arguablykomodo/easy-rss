@@ -1,5 +1,3 @@
-import { Entry } from "../defs";
-
 const entryTemplate = document.getElementById("entry") as HTMLTemplateElement;
 const entriesEl = document.getElementById("entries")!;
 

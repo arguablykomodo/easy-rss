@@ -1,5 +1,3 @@
-import { Feed } from "../defs";
-
 async function sync() {
   const r = await fetch(
     "https://www.youtube.com/subscription_manager?action_takeout=1"

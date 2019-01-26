@@ -1,5 +1,3 @@
-import { Feed } from "../defs";
-
 const input = document.getElementById("upload") as HTMLInputElement;
 
 async function importFeeds() {

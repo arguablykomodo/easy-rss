@@ -1,4 +1,3 @@
-import { Entry, Feed } from "../defs";
 import { fetchEntries } from "./parser";
 
 async function fetch() {
