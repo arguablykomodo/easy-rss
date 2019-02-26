@@ -11,7 +11,7 @@
     "dist": "yarn build && web-ext build -s dist/"
   },
   "devDependencies": {
-    "copy-webpack-plugin": "^4.6.0",
+    "copy-webpack-plugin": "^5.0.0",
     "css-loader": "^2.1.0",
     "mini-css-extract-plugin": "^0.5.0",
     "node-sass": "^4.11.0",
@@ -19,13 +19,13 @@
     "pug-loader": "^2.4.0",
     "sass-loader": "^7.1.0",
     "ts-loader": "^5.3.3",
-    "tslint": "^5.12.1",
-    "tslint-config-prettier": "^1.17.0",
-    "typescript": "^3.2.4",
-    "web-ext": "^2.9.3",
+    "tslint": "^5.13.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.3.3333",
+    "web-ext": "^3.0.0",
     "web-ext-types": "^3.1.0",
-    "webpack": "^4.29.0",
-    "webpack-cli": "^3.2.1"
+    "webpack": "^4.29.5",
+    "webpack-cli": "^3.2.3"
   },
   "dependencies": {
     "photon-colors": "^3.3.1"
