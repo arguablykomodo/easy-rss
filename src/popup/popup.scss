@@ -147,7 +147,7 @@ nav {
 
     transition: transform 0.25s cubic-bezier(0.07, 0.95, 0, 1);
     &:hover {
-      transform: scale(5);
+      transform: scale(4);
       z-index: 1;
     }
   }
