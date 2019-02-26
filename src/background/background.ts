@@ -1,5 +1,8 @@
 import { fetchEntries } from "./parser";
 
+const sorter = (a: Entry, b: Entry) =>
+  new Date(b.date).getTime() - new Date(a.date).getTime();
+
 async function fetch() {
   const {
     feeds,
@@ -15,9 +18,7 @@ async function fetch() {
   }
 
   const entries = ([] as Entry[]).concat(...(await Promise.all(toFetch)));
-  entries.sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-  );
+  entries.sort(sorter);
 
   browser.storage.sync.set({ entries: entries as any, read });
 }
@@ -41,13 +42,8 @@ browser.storage.onChanged.addListener(async changes => {
   }
 
   if (changes.read || changes.entries) {
-    const {
-      entries,
-      read
-    }: { entries: Entry[]; read: string[] } = await browser.storage.sync.get({
-      entries: [],
-      read: []
-    });
+    const read = changes.read.newValue;
+    const entries = changes.entries.newValue;
 
     let unread = 0;
     for (const entry of entries) if (read.indexOf(entry.id) === -1) unread++;

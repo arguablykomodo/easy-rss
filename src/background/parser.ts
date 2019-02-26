@@ -15,6 +15,8 @@ const attributes: { [x: string]: Option[] } = {
   title: [{ selector: "title" }]
 };
 
+const domainRegex = /[/?#]/;
+
 function parse(el: Element, feed: Feed) {
   const entry: any = {};
 
@@ -33,23 +35,23 @@ function parse(el: Element, feed: Feed) {
   }
 
   // Get icon
+  let domain = feed.url;
+  if (feed.url.startsWith("http://")) domain = domain.slice(7);
+  if (feed.url.startsWith("https://")) domain = domain.slice(8);
   entry.icon =
-    "http://www.google.com/s2/favicons?domain=" +
-    feed.url
-      .replace("http://", "")
-      .replace("https://", "")
-      .split(/[/?#]/)[0];
+    "http://www.google.com/s2/favicons?domain=" + domain.split(domainRegex)[0];
 
   // Get thumbnail
-  const results = /<media:thumbnail.+url="(.+?)".*\/>/.exec(el.innerHTML);
-  if (results) entry.thumbnail = results[1];
+  const thumbnail = el.getElementsByTagName("media:thumbnail")[0];
+  if (thumbnail) entry.thumbnail = thumbnail.getAttribute("url");
 
   return entry as Entry;
 }
 
+const parser = new DOMParser();
+
 async function fetchEntries(feed: Feed) {
   const src = await (await fetch(feed.url)).text();
-  const parser = new DOMParser();
   const xml = parser.parseFromString(src, "application/xml");
   const entries: Entry[] = [];
   for (const el of xml.querySelectorAll("entry, item"))
