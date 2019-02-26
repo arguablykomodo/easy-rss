@@ -42,8 +42,12 @@ browser.storage.onChanged.addListener(async changes => {
   }
 
   if (changes.read || changes.entries) {
-    const read = changes.read.newValue;
-    const entries = changes.entries.newValue;
+    const read: string[] = changes.read
+      ? changes.read.newValue
+      : (await browser.storage.sync.get({ read: [] })).read;
+    const entries: Entry[] = changes.entries
+      ? changes.entries.newValue
+      : (await browser.storage.sync.get({ entries: [] })).entries;
 
     let unread = 0;
     for (const entry of entries) if (read.indexOf(entry.id) === -1) unread++;
