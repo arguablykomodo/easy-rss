@@ -34,6 +34,7 @@ button {
 }
 
 input[type="range"] {
+  background: none;
   min-width: 300px;
 
   &::-moz-range-track {
