@@ -4,6 +4,8 @@ const sorter = (a: Entry, b: Entry) =>
   new Date(b.date).getTime() - new Date(a.date).getTime();
 
 async function fetch() {
+  browser.browserAction.setBadgeBackgroundColor({ color: "#3b88c3" });
+  browser.browserAction.setBadgeText({ text: "🕒" });
   const {
     feeds,
     read
@@ -52,6 +54,7 @@ browser.storage.onChanged.addListener(async changes => {
     let unread = 0;
     for (const entry of entries) if (read.indexOf(entry.id) === -1) unread++;
 
+    browser.browserAction.setBadgeBackgroundColor({ color: "#dd2e44" });
     browser.browserAction.setBadgeText({
       text: unread === 0 ? "" : unread.toString()
     });
