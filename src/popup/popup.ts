@@ -4,7 +4,6 @@ import "./popup.scss";
 // Find feeds in page
 document.getElementById("find")!.addEventListener("click", () => {
   browser.tabs.executeScript(undefined, { file: "/find/find.js" });
-  browser.tabs.insertCSS(undefined, { file: "/find/find.css" });
 });
 
 // Add new feed
