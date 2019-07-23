@@ -10,33 +10,24 @@
 
   <template id="entry">
     <article class="entry">
-      <div class="side">
-        <header>
-          <img class="icon" />
-          <div class="title"></div>
-          <div
-            class="read"
-            style="background-image: url(../assets/check.svg);"
-          ></div>
-        </header>
-        <footer>
-          <div class="author"></div>
-          <time class="date"></time>
-        </footer>
-      </div>
+      <img class="icon" />
+      <div class="title"></div>
+      <img class="read" src="../assets/check.svg" title="Mark as read" />
+      <div class="author"></div>
+      <time class="date"></time>
+      <img class="thumbnail" />
     </article>
   </template>
 
   <body>
     <nav>
-      <span>EasyRSS</span>
-      <img src="../assets/settings.svg" id="openDropdown" />
+      <div id="tools">
+        <div id="manage">Manage feeds</div>
+        <div id="find">Find feeds in page</div>
+        <div id="clear">Mark all as read</div>
+      </div>
+      <img src="../assets/settings.svg" id="openTools" />
     </nav>
-    <div id="dropdown">
-      <div id="find">Find feeds in page</div>
-      <div id="manage">Manage feeds</div>
-      <div id="clear">Mark all as read</div>
-    </div>
     <main id="entries"></main>
   </body>
   <script src="popup.js"></script>

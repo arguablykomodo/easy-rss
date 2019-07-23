@@ -2,14 +2,10 @@
 @import "../utils";
 
 html {
-  overflow-x: hidden;
   scrollbar-color: $ink-60 $ink-70;
 }
 
 body {
-  min-width: 80ch;
-  min-height: 10em;
-
   display: flex;
   flex-direction: column;
 
@@ -18,145 +14,93 @@ body {
 }
 
 nav {
+  @include shadow;
   position: sticky;
-  z-index: 1;
   top: 0;
-
   display: flex;
-  align-items: center;
-  height: 3em;
-  padding-left: 0.75em;
+  justify-content: end;
 
   background: $ink-70;
-  @include shadow();
-
-  span {
-    flex-grow: 1;
-  }
-
-  img {
-    padding: 0 0.75em;
-    align-self: stretch;
-  }
 }
 
-#openDropdown {
-  @include hover();
+#openTools {
+  padding: 0.5em;
+  @include hover;
 }
 
-#dropdown {
-  position: fixed;
-  right: 0;
-  top: 3em;
-  overflow: hidden;
-  z-index: 1;
+#tools {
+  overflow: auto;
+  display: flex;
 
-  background: $ink-70;
+  div {
+    display: flex;
+    align-items: center;
+
+    padding: 0 1em;
+    @include hover;
+  }
 
   transition: clip-path 0.25s cubic-bezier(0.07, 0.95, 0, 1);
-  clip-path: inset(0 0 100% 0);
+  clip-path: inset(0 0 0 100%);
   &.open {
     clip-path: inset(0 0 0 0);
   }
-
-  div {
-    @include hover();
-    padding: 0.5em 1em;
-  }
 }
 
-#entries {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
-.no_entries {
-  margin: auto;
-  color: rgba(white, 0.5);
+.empty {
+  margin: 1em;
+  text-align: center;
 }
 
 .entry {
-  display: flex;
+  display: grid;
+  grid-gap: 0.5em;
+  grid-template-columns: max-content 1fr max-content max-content;
+  grid-template-rows: min-content min-content;
+  grid-template-areas:
+    "icon title read thumbnail"
+    "author author date thumbnail";
   align-items: center;
-  margin: 0.25em;
+
+  cursor: pointer;
+  background: $ink-70;
+  margin: 0.5em;
   padding: 0.5em;
 
-  background: $ink-70;
-  cursor: pointer;
-
-  .side {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-
-  footer {
-    display: flex;
-  }
-
-  header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 1ch;
-
-    .icon {
-      margin-right: 1ch;
-    }
-
-    .title {
-      flex: 1;
-    }
-
-    .read {
-      position: relative;
-      width: 16px;
-      height: 16px;
-      margin-left: 1ch;
-
-      &::after {
-        display: block;
-        position: absolute;
-        width: 12ch;
-
-        content: "Mark as read";
-        text-align: center;
-
-        transform: translate(calc(-50% + 1ch), -100%);
-        background: rgba(black, 0.5);
-        border-radius: 4px;
-        opacity: 0;
-      }
-
-      &:hover::after {
-        transition: opacity 1s cubic-bezier(1, 0, 0, -0.6);
-        opacity: 1;
-      }
-    }
-  }
-
-  .author {
-    flex: 1;
-  }
-
-  .image {
-    height: 3.5em;
-    margin-left: 1em;
-    transform-origin: center right;
-
-    transition: transform 0.25s cubic-bezier(0.07, 0.95, 0, 1);
-    &:hover {
-      transform: scale(4);
-      z-index: 1;
-    }
-  }
-
-  &:first-child .image {
+  &:first-of-type .thumbnail {
     transform-origin: top right;
   }
-
-  &:last-child .image {
+  &:last-of-type .thumbnail {
     transform-origin: bottom right;
+  }
+}
+
+$areas: "icon", "title", "read", "thumbnail", "author", "date", "thumbnail";
+@each $area in $areas {
+  .#{$area} {
+    grid-area: #{$area};
+  }
+}
+
+.title {
+  text-overflow: ellipsis;
+}
+
+.read {
+  justify-self: flex-end;
+}
+
+.author,
+.date {
+  align-self: flex-end;
+}
+
+.thumbnail {
+  max-height: 3em;
+  transform-origin: center right;
+
+  transition: transform 0.25s cubic-bezier(0.07, 0.95, 0, 1);
+  &:hover {
+    transform: scale(4);
   }
 }

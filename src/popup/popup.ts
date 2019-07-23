@@ -1,7 +1,7 @@
 import { populateEntries } from "./populate";
 import "./popup.scss";
 
-const dropdown = document.getElementById("dropdown")!;
+const tools = document.getElementById("tools")!;
 
 // Find feeds in page
 document.getElementById("find")!.addEventListener("click", () => {
@@ -9,10 +9,10 @@ document.getElementById("find")!.addEventListener("click", () => {
   browser.tabs.insertCSS(undefined, { file: "/find/find.css" });
 });
 
-// Open dropdown
+// Open tools
 document
-  .getElementById("openDropdown")!
-  .addEventListener("click", () => dropdown.classList.toggle("open"));
+  .getElementById("openTools")!
+  .addEventListener("click", () => tools.classList.toggle("open"));
 
 // Open settings
 document

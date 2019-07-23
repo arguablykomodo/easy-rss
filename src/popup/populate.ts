@@ -16,7 +16,7 @@ async function populateEntries() {
   for (const entry of entries) if (read.indexOf(entry.id) === -1) unread++;
   if (unread === 0) {
     const text = document.createElement("div");
-    text.className = "no_entries";
+    text.className = "empty";
     text.textContent = "You are all caught up!";
     entriesEl.appendChild(text);
   }
@@ -35,12 +35,9 @@ async function populateEntries() {
     el.querySelector(".date")!.textContent = new Date(
       entry.date
     ).toLocaleDateString();
-
     if (entry.thumbnail) {
-      const image = document.createElement("img");
-      image.className = "image";
-      image.src = entry.thumbnail;
-      entryEl.appendChild(image);
+      (el.querySelector(".thumbnail") as HTMLImageElement).src =
+        entry.thumbnail;
     }
 
     entryEl.addEventListener("click", async e => {
