@@ -16,7 +16,9 @@ add.addEventListener("click", e => {
     const feeds: Feed[] = (await browser.storage.sync.get({ feeds: [] })).feeds;
     feeds.unshift({ url: input.value, name: "" });
     browser.storage.sync.set({ feeds: feeds as any });
-    add.innerHTML = "Add new feed";
+
+    add.removeChild(input);
+    add.textContent = "Add new feed";
   });
   add.appendChild(input);
   input.focus();

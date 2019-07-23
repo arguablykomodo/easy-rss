@@ -21,6 +21,7 @@ const html = dialog({
 const div = document.createElement("div");
 (div.style as any).all = "initial";
 const shadow = div.attachShadow({ mode: "open" });
+// This is safe because it goes through a template engine (pugjs) that makes sure everything is sanitized
 shadow.innerHTML = html;
 document.body.appendChild(div);
 

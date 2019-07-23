@@ -10,7 +10,7 @@ async function populateEntries() {
     read: []
   });
 
-  entriesEl.innerHTML = "";
+  while (entriesEl.hasChildNodes()) entriesEl.removeChild(entriesEl.lastChild!);
 
   let unread = 0;
   for (const entry of entries) if (read.indexOf(entry.id) === -1) unread++;
@@ -35,10 +35,8 @@ async function populateEntries() {
     el.querySelector(".date")!.textContent = new Date(
       entry.date
     ).toLocaleDateString();
-    if (entry.thumbnail) {
-      (el.querySelector(".thumbnail") as HTMLImageElement).src =
-        entry.thumbnail;
-    }
+    if (entry.thumbnail)
+      el.querySelector(".thumbnail")!.setAttribute("src", entry.thumbnail);
 
     entryEl.addEventListener("click", async e => {
       read.push(entry.id);

@@ -2,7 +2,7 @@ const feedTemplate = document.getElementById("feed") as HTMLTemplateElement;
 const feedsEl = document.getElementById("feeds")!;
 
 async function populateFeeds(feeds: Feed[]) {
-  feedsEl.innerHTML = "";
+  while (feedsEl.hasChildNodes()) feedsEl.removeChild(feedsEl.lastChild!);
 
   if (feeds.length === 0) {
     const text = document.createElement("div");
