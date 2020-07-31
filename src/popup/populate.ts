@@ -5,7 +5,7 @@ async function populateEntries() {
   const {
     entries,
     read
-  }: { entries: Entry[]; read: string[] } = await browser.storage.sync.get({
+  }: { entries: Entry[]; read: string[] } = await browser.storage.local.get({
     entries: [],
     read: []
   });
@@ -40,7 +40,7 @@ async function populateEntries() {
 
     entryEl.addEventListener("click", async e => {
       read.push(entry.id);
-      browser.storage.sync.set({ read });
+      browser.storage.local.set({ read });
 
       // Only open new tab if user didn't click the "mark as read" button
       if ((e.target as Element).className !== "read")

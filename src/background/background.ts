@@ -1,18 +1,25 @@
 import { fetchEntries } from "./parser";
 
+browser.storage.sync.get(["entries", "read"]).then(({ entries, read }) => {
+  if (entries) {
+    console.log("migrating entry data to local storage...");
+    browser.storage.local.set({ entries });
+    browser.storage.sync.remove("entries");
+  }
+  if (read) {
+    console.log("migrating read data to local storage...");
+    browser.storage.local.set({ read });
+    browser.storage.sync.remove("read");
+  }
+});
+
 const sorter = (a: Entry, b: Entry) =>
   new Date(b.date).getTime() - new Date(a.date).getTime();
 
 async function fetch() {
   browser.browserAction.setBadgeBackgroundColor({ color: "#3b88c3" });
   browser.browserAction.setBadgeText({ text: "🕒" });
-  const {
-    feeds,
-    read
-  }: { feeds: Feed[]; read: string[] } = await browser.storage.sync.get({
-    feeds: [],
-    read: []
-  });
+  const feeds: Feed[] = (await browser.storage.sync.get({ feeds: [] })).feeds;
 
   const toFetch: Array<Promise<Entry[]>> = [];
   for (const feed of feeds) {
@@ -22,7 +29,7 @@ async function fetch() {
   const entries = ([] as Entry[]).concat(...(await Promise.all(toFetch)));
   entries.sort(sorter);
 
-  browser.storage.sync.set({ entries: entries as any, read });
+  browser.storage.local.set({ entries: entries as any });
 }
 fetch();
 
@@ -31,7 +38,7 @@ browser.storage.sync.get({ interval: 5 }).then(results => {
   browser.alarms.onAlarm.addListener(fetch);
 });
 
-browser.storage.onChanged.addListener(async changes => {
+browser.storage.onChanged.addListener(async (changes, areaName) => {
   if (changes.feeds) {
     fetch();
   }
@@ -43,13 +50,13 @@ browser.storage.onChanged.addListener(async changes => {
     });
   }
 
-  if (changes.read || changes.entries) {
-    const read: string[] = changes.read
+  if ((changes.read || changes.entries) && areaName === "local") {
+    const read: string[] = changes.read && changes.read.newValue
       ? changes.read.newValue
-      : (await browser.storage.sync.get({ read: [] })).read;
-    const entries: Entry[] = changes.entries
+      : (await browser.storage.local.get({ read: [] })).read;
+    const entries: Entry[] = changes.entries && changes.entries.newValue
       ? changes.entries.newValue
-      : (await browser.storage.sync.get({ entries: [] })).entries;
+      : (await browser.storage.local.get({ entries: [] })).entries;
 
     let unread = 0;
     for (const entry of entries) if (read.indexOf(entry.id) === -1) unread++;

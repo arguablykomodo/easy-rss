@@ -50,6 +50,6 @@
     "browser_style": true
   },
 
-  "permissions": ["<all_urls>", "activeTab", "storage", "alarms"],
+  "permissions": ["<all_urls>", "activeTab", "storage", "alarms", "unlimitedStorage"],
   "web_accessible_resources": ["find/find.css"]
 }

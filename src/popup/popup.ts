@@ -40,19 +40,19 @@ document.getElementById("clear")!.addEventListener("click", async () => {
   const {
     entries,
     read
-  }: { entries: Entry[]; read: string[] } = await browser.storage.sync.get({
+  }: { entries: Entry[]; read: string[] } = await browser.storage.local.get({
     entries: [],
     read: []
   });
 
   for (const entry of entries)
     if (read.indexOf(entry.id) === -1) read.push(entry.id);
-  browser.storage.sync.set({ read });
+  browser.storage.local.set({ read });
 });
 
 populateEntries();
-browser.storage.onChanged.addListener(changes => {
-  if (changes.read || changes.entries) {
+browser.storage.onChanged.addListener((changes, areaName) => {
+  if ((changes.read || changes.entries) && areaName === "local") {
     populateEntries();
   }
 });
