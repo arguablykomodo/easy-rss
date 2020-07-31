@@ -21,7 +21,7 @@ Easy RSS includes features such as:
 - Importing and exporting your feeds to and from other RSS readers, so you can
   easily adopt Easy RSS, or leave for another RSS reader if you feel like it
   (altough I shouldn't tell you that if I want a higher usercount).
-- An simple and easy to understand modern UI that makes sure you are never lost
+- A simple and easy to understand modern UI that makes sure you are never lost
   in settings pages and Windows XP-esque dialogs
 
 ## Building
