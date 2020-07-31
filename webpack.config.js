@@ -39,13 +39,11 @@ module.exports = env => ({
     extensions: [".js", ".ts"]
   },
   plugins: [
-    new CopyWebpackPlugin([
-      {
-        from: "**/*",
-        context: "src",
-        ignore: ["*.ts", "*.scss"]
-      }
-    ]),
+    new CopyWebpackPlugin({ patterns: [
+      { from: "src/manifest.json" },
+      { from: "**/*.html", context: "src" },
+      { from: "src/assets", to: "assets" }
+    ]}),
     new MiniCssExtractPlugin()
   ]
 });
